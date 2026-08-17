@@ -71,6 +71,8 @@ section.section {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 600;
   color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.01em;
 }
 
 /* =========================================
@@ -305,7 +307,7 @@ section.section {
 
 .intro__inner {
   max-width: 1060px;
-  margin-left: 0;
+  margin-left: clamp(24px, 5vw, 70px);
 }
 
 .intro__heading {
@@ -392,14 +394,19 @@ section.section {
   background: #000;
 }
 
+.skills .section-header {
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
+}
+
 .skills__bars {
   display: flex;
   flex-direction: column;
   gap: 34px;
-  max-width: 760px;
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
   margin-bottom: 64px;
   text-align: center;
-
 }
 
 .skill-bar__label {
@@ -435,6 +442,8 @@ section.section {
   background: #f2f2f2;
   border-radius: 6px;
   padding: 40px 6vw;
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
   margin-bottom: 48px;
 }
 
@@ -472,6 +481,7 @@ section.section {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  margin-left: clamp(24px, 5vw, 70px);
   transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -487,11 +497,17 @@ section.section {
   background: #000;
 }
 
+.reputation .section-header {
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
+}
+
 .reputation__list {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  max-width: 760px;
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
 }
 
 .testimonial {
@@ -624,6 +640,13 @@ section.section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
+}
+
+.contact .section-header {
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
 }
 
 .contact__lead {
@@ -733,6 +756,8 @@ section.section {
   color: var(--text-secondary);
   font-size: 0.8rem;
   text-align: center;
+  max-width: 1060px;
+  margin-left: clamp(24px, 5vw, 70px);
 }
 
 /* =========================================
@@ -795,7 +820,16 @@ section.section {
     padding: 80px 6vw;
   }
 
-  .intro__inner {
+  .intro__inner,
+  .skills .section-header,
+  .skills__bars,
+  .stats,
+  .btn-resume,
+  .reputation .section-header,
+  .reputation__list,
+  .contact .section-header,
+  .contact__grid,
+  .footer {
     margin-left: 0;
   }
 
