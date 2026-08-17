@@ -1,22 +1,30 @@
 // Active nav link highlighting based on scroll position
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
+const isViewPage = window.location.pathname.includes('view.html') || window.location.pathname.endsWith('/view') || window.location.pathname.endsWith('/view/');
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach((link) => {
-          link.classList.toggle('active', link.dataset.section === id);
-        });
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
+if (!isViewPage && sections.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            if (link.dataset.section) {
+              link.classList.toggle(
+                'active',
+                link.dataset.section === id || ((id === 'intro' || id === 'about') && link.dataset.section === 'about')
+              );
+            }
+          });
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
 
-sections.forEach((section) => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
+}
 
 // Contact form (front-end only demo submission)
 const form = document.getElementById('contact-form');
