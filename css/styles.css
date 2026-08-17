@@ -838,12 +838,19 @@ section.section {
 .figma-preview-body {
   position: relative;
   background: #080808;
-  padding: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.figma-canvas-preview {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
-  max-height: 72vh;
+  width: 100%;
 }
 
 .figma-preview-img {
@@ -859,6 +866,166 @@ section.section {
   width: auto;
   max-width: none;
   cursor: zoom-out;
+}
+
+/* =========================================
+   Figma Prototypes Grid
+========================================= */
+.figma-prototypes-section {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.figma-prototypes-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.02em;
+}
+
+.figma-prototypes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.prototype-card {
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform var(--transition-med), border-color var(--transition-med), box-shadow var(--transition-med);
+}
+
+.prototype-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+.prototype-img-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.prototype-img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+}
+
+.prototype-card:hover .prototype-img {
+  transform: scale(1.02);
+}
+
+.prototype-caption {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Lightbox Modal */
+.image-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 24px;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-lightbox.is-open .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.08);
+}
+
+.lightbox-caption {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 600px;
+}
+
+@media (max-width: 900px) {
+  .figma-prototypes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .figma-prototypes-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {

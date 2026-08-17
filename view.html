@@ -93,9 +93,48 @@
             </div>
           </div>
           <div class="figma-preview-body">
-            <img src="assets/images/figma-image1.jpg"
-              alt="Smart Watch UI UX Figma Design Wireframes and Screens by Madan Karki" class="figma-preview-img"
-              id="figma-preview-img">
+            <div class="figma-canvas-preview">
+              <img src="assets/images/figma-image1.jpg"
+                alt="Smart Watch UI UX Figma Design Wireframes and Screens by Madan Karki" class="figma-preview-img zoomable-img"
+                id="figma-preview-img">
+            </div>
+
+            <!-- Mobile App Prototype Screens -->
+            <div class="figma-prototypes-section">
+              <div class="figma-prototypes-title">
+                <i class="fa-solid fa-mobile-screen-button" style="color: #38bdf8;"></i>
+                <span>Interactive Mobile App Prototype Screens</span>
+              </div>
+              <div class="figma-prototypes-grid">
+                <div class="prototype-card">
+                  <div class="prototype-img-wrap">
+                    <img src="assets/images/prototype1.png" alt="Prototype 1 - OMEGA Login & Welcome Screen" class="prototype-img zoomable-img">
+                  </div>
+                  <span class="prototype-caption">1. Sign In &amp; Welcome</span>
+                </div>
+
+                <div class="prototype-card">
+                  <div class="prototype-img-wrap">
+                    <img src="assets/images/prototype2.png" alt="Prototype 2 - Watch Store & Catalog Screen" class="prototype-img zoomable-img">
+                  </div>
+                  <span class="prototype-caption">2. Store &amp; Catalog</span>
+                </div>
+
+                <div class="prototype-card">
+                  <div class="prototype-img-wrap">
+                    <img src="assets/images/prototype3.png" alt="Prototype 3 - Interactive Search Screen" class="prototype-img zoomable-img">
+                  </div>
+                  <span class="prototype-caption">3. Search &amp; Filtering</span>
+                </div>
+
+                <div class="prototype-card">
+                  <div class="prototype-img-wrap">
+                    <img src="assets/images/prototype4.png" alt="Prototype 4 - Products List & Filter Screen" class="prototype-img zoomable-img">
+                  </div>
+                  <span class="prototype-caption">4. Category &amp; Products</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -119,7 +158,7 @@
           <div class="figma-preview-body">
             <img src="assets/images/design-systems.png"
               alt="Design Systems Roadmap: Low-Fidelity, Wireframing, Layout Design, Components, Design Planning"
-              class="figma-preview-img" id="design-systems-preview-img">
+              class="figma-preview-img zoomable-img" id="design-systems-preview-img">
           </div>
         </div>
       </div>
@@ -128,16 +167,26 @@
 
   </main>
 
+  <!-- Lightbox Modal for Full-Screen Image Viewing -->
+  <div class="image-lightbox" id="image-lightbox">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+    <img src="" alt="Enlarged preview" class="lightbox-img" id="lightbox-img">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
   <script>
     const figmaBtn = document.getElementById('badge-figma');
     const figmaWrapper = document.getElementById('figma-preview-wrapper');
     const figmaClose = document.getElementById('figma-preview-close');
-    const figmaImg = document.getElementById('figma-preview-img');
 
     const dsBtn = document.getElementById('badge-design-systems');
     const dsWrapper = document.getElementById('design-systems-preview-wrapper');
     const dsClose = document.getElementById('design-systems-preview-close');
-    const dsImg = document.getElementById('design-systems-preview-img');
+
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
 
     function closeFigma() {
       if (figmaWrapper && figmaBtn) {
@@ -174,12 +223,6 @@
       figmaClose.addEventListener('click', closeFigma);
     }
 
-    if (figmaImg) {
-      figmaImg.addEventListener('click', () => {
-        figmaImg.classList.toggle('is-zoomed');
-      });
-    }
-
     if (dsBtn && dsWrapper) {
       dsBtn.addEventListener('click', () => {
         closeFigma();
@@ -199,9 +242,30 @@
       dsClose.addEventListener('click', closeDesignSystems);
     }
 
-    if (dsImg) {
-      dsImg.addEventListener('click', () => {
-        dsImg.classList.toggle('is-zoomed');
+    // Lightbox modal for clicking any image to inspect full size
+    document.querySelectorAll('.zoomable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        if (lightbox && lightboxImg) {
+          lightboxImg.src = img.src;
+          lightboxCaption.textContent = img.alt || '';
+          lightbox.classList.add('is-open');
+        }
+      });
+    });
+
+    if (lightboxClose && lightbox) {
+      lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('is-open');
+      });
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('is-open');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+          lightbox.classList.remove('is-open');
+        }
       });
     }
   </script>
