@@ -68,7 +68,10 @@
           title="Click to view Figma design">
           <i class="fa-brands fa-figma"></i> Figma <i class="fa-solid fa-arrow-down badge-arrow"></i>
         </button>
-        <span class="badge"><i class="fa-solid fa-layer-group"></i> Design Systems</span>
+        <button type="button" class="badge badge--btn" id="badge-design-systems" aria-expanded="false"
+          title="Click to view Design Systems workflow">
+          <i class="fa-solid fa-layer-group"></i> Design Systems <i class="fa-solid fa-arrow-down badge-arrow"></i>
+        </button>
         <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> Mobile &amp; Web</span>
         <span class="badge"><i class="fa-solid fa-code"></i> Frontend Ready</span>
       </div>
@@ -82,7 +85,7 @@
             </div>
             <div class="figma-preview-title">
               <i class="fa-brands fa-figma"></i>
-              <span>Smart Watch UI / UX Design &amp; Wireframes</span>
+              <span>Smart Watch UI / UX Design</span>
             </div>
             <div class="figma-preview-actions">
               <button type="button" class="figma-preview-close" id="figma-preview-close"
@@ -97,6 +100,30 @@
         </div>
       </div>
 
+      <!-- Design Systems Preview (Revealed on Design Systems badge click) -->
+      <div class="figma-preview-wrapper" id="design-systems-preview-wrapper">
+        <div class="figma-preview-card">
+          <div class="figma-preview-header">
+            <div class="figma-preview-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="figma-preview-title">
+              <i class="fa-solid fa-layer-group" style="color: #38bdf8;"></i>
+              <span>Design Systems Workflow &amp; Methodology</span>
+            </div>
+            <div class="figma-preview-actions">
+              <button type="button" class="figma-preview-close" id="design-systems-preview-close"
+                aria-label="Close Preview">&times;</button>
+            </div>
+          </div>
+          <div class="figma-preview-body">
+            <img src="assets/images/design-systems.png"
+              alt="Design Systems Roadmap: Low-Fidelity, Wireframing, Layout Design, Components, Design Planning"
+              class="figma-preview-img" id="design-systems-preview-img">
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </main>
@@ -107,8 +134,30 @@
     const figmaClose = document.getElementById('figma-preview-close');
     const figmaImg = document.getElementById('figma-preview-img');
 
+    const dsBtn = document.getElementById('badge-design-systems');
+    const dsWrapper = document.getElementById('design-systems-preview-wrapper');
+    const dsClose = document.getElementById('design-systems-preview-close');
+    const dsImg = document.getElementById('design-systems-preview-img');
+
+    function closeFigma() {
+      if (figmaWrapper && figmaBtn) {
+        figmaWrapper.classList.remove('is-open');
+        figmaBtn.classList.remove('is-active');
+        figmaBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function closeDesignSystems() {
+      if (dsWrapper && dsBtn) {
+        dsWrapper.classList.remove('is-open');
+        dsBtn.classList.remove('is-active');
+        dsBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
     if (figmaBtn && figmaWrapper) {
       figmaBtn.addEventListener('click', () => {
+        closeDesignSystems();
         const isOpen = figmaWrapper.classList.toggle('is-open');
         figmaBtn.classList.toggle('is-active', isOpen);
         figmaBtn.setAttribute('aria-expanded', isOpen);
@@ -121,17 +170,38 @@
       });
     }
 
-    if (figmaClose && figmaWrapper && figmaBtn) {
-      figmaClose.addEventListener('click', () => {
-        figmaWrapper.classList.remove('is-open');
-        figmaBtn.classList.remove('is-active');
-        figmaBtn.setAttribute('aria-expanded', 'false');
-      });
+    if (figmaClose) {
+      figmaClose.addEventListener('click', closeFigma);
     }
 
     if (figmaImg) {
       figmaImg.addEventListener('click', () => {
         figmaImg.classList.toggle('is-zoomed');
+      });
+    }
+
+    if (dsBtn && dsWrapper) {
+      dsBtn.addEventListener('click', () => {
+        closeFigma();
+        const isOpen = dsWrapper.classList.toggle('is-open');
+        dsBtn.classList.toggle('is-active', isOpen);
+        dsBtn.setAttribute('aria-expanded', isOpen);
+
+        if (isOpen) {
+          setTimeout(() => {
+            dsWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 200);
+        }
+      });
+    }
+
+    if (dsClose) {
+      dsClose.addEventListener('click', closeDesignSystems);
+    }
+
+    if (dsImg) {
+      dsImg.addEventListener('click', () => {
+        dsImg.classList.toggle('is-zoomed');
       });
     }
   </script>
