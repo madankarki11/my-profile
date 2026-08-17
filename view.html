@@ -78,6 +78,7 @@
 
       <!-- Figma Project Preview (Revealed on Figma badge click) -->
       <div class="figma-preview-wrapper" id="figma-preview-wrapper">
+        <!-- 1. Main Figma Canvas Preview Card -->
         <div class="figma-preview-card">
           <div class="figma-preview-header">
             <div class="figma-preview-dots">
@@ -88,6 +89,7 @@
               <span>Smart Watch UI / UX Design</span>
             </div>
             <div class="figma-preview-actions">
+              <span class="figma-preview-hint">Click image to zoom</span>
               <button type="button" class="figma-preview-close" id="figma-preview-close"
                 aria-label="Close Preview">&times;</button>
             </div>
@@ -98,43 +100,68 @@
                 alt="Smart Watch UI UX Figma Design Wireframes and Screens by Madan Karki" class="figma-preview-img zoomable-img"
                 id="figma-preview-img">
             </div>
+          </div>
+        </div>
 
-            <!-- Mobile App Prototype Screens -->
-            <div class="figma-prototypes-section">
-              <div class="figma-prototypes-title">
-                <i class="fa-solid fa-mobile-screen-button" style="color: #38bdf8;"></i>
-                <span>Interactive Mobile App Prototype Screens</span>
-              </div>
-              <div class="figma-prototypes-grid">
-                <div class="prototype-card">
-                  <div class="prototype-img-wrap">
-                    <img src="assets/images/prototype1.png" alt="Prototype 1 - OMEGA Login & Welcome Screen" class="prototype-img zoomable-img">
-                  </div>
-                  <span class="prototype-caption">1. Sign In &amp; Welcome</span>
-                </div>
+        <!-- 2. Circular Layout for Mobile Prototype Screens (Outside and below main image) -->
+        <div class="circular-prototypes-wrapper">
+          <div class="circular-layout-header">
+            <span class="section-kicker">Interactive App Prototypes</span>
+            <h3 class="circular-layout-title">Mobile Screen Journey</h3>
+            <p class="circular-layout-subtitle">Click any screen to view in full resolution</p>
+          </div>
 
-                <div class="prototype-card">
-                  <div class="prototype-img-wrap">
-                    <img src="assets/images/prototype2.png" alt="Prototype 2 - Watch Store & Catalog Screen" class="prototype-img zoomable-img">
-                  </div>
-                  <span class="prototype-caption">2. Store &amp; Catalog</span>
-                </div>
+          <div class="circular-orbit-stage">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring orbit-ring--inner"></div>
 
-                <div class="prototype-card">
-                  <div class="prototype-img-wrap">
-                    <img src="assets/images/prototype3.png" alt="Prototype 3 - Interactive Search Screen" class="prototype-img zoomable-img">
-                  </div>
-                  <span class="prototype-caption">3. Search &amp; Filtering</span>
-                </div>
+            <!-- Center Hub -->
+            <div class="orbit-center-hub">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span>OMEGA UI</span>
+              <small>4 Prototypes</small>
+            </div>
 
-                <div class="prototype-card">
-                  <div class="prototype-img-wrap">
-                    <img src="assets/images/prototype4.png" alt="Prototype 4 - Products List & Filter Screen" class="prototype-img zoomable-img">
-                  </div>
-                  <span class="prototype-caption">4. Category &amp; Products</span>
+            <!-- Top: Prototype 1 -->
+            <div class="orbit-node orbit-node--top">
+              <div class="orbit-card">
+                <div class="orbit-img-wrap">
+                  <img src="assets/images/prototype1.png" alt="Prototype 1 - OMEGA Sign In & Welcome Screen" class="orbit-img zoomable-img">
                 </div>
+                <span class="orbit-label">1. Welcome / Sign In</span>
               </div>
             </div>
+
+            <!-- Right: Prototype 2 -->
+            <div class="orbit-node orbit-node--right">
+              <div class="orbit-card">
+                <div class="orbit-img-wrap">
+                  <img src="assets/images/prototype2.png" alt="Prototype 2 - Watch Store & Catalog Screen" class="orbit-img zoomable-img">
+                </div>
+                <span class="orbit-label">2. Store &amp; Catalog</span>
+              </div>
+            </div>
+
+            <!-- Bottom: Prototype 3 -->
+            <div class="orbit-node orbit-node--bottom">
+              <div class="orbit-card">
+                <div class="orbit-img-wrap">
+                  <img src="assets/images/prototype3.png" alt="Prototype 3 - Interactive Search Screen" class="orbit-img zoomable-img">
+                </div>
+                <span class="orbit-label">3. Search &amp; Filter</span>
+              </div>
+            </div>
+
+            <!-- Left: Prototype 4 -->
+            <div class="orbit-node orbit-node--left">
+              <div class="orbit-card">
+                <div class="orbit-img-wrap">
+                  <img src="assets/images/prototype4.png" alt="Prototype 4 - Products List & Filter Screen" class="orbit-img zoomable-img">
+                </div>
+                <span class="orbit-label">4. Products Grid</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
