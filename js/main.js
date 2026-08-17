@@ -36,40 +36,27 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Swap portrait on hover with smooth fade (desktop only)
-if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
-  const profileImages = document.querySelectorAll('.hero__image, .sidebar__profile-img');
-  const hoverImageSrc = 'assets/images/hover.jpg?v=2';
+// Hero image tap/click toggle for mobile and desktop
+const heroImageWrap = document.getElementById('hero-image-wrap');
 
-  // Preload hover image
-  const preloadImg = new Image();
-  preloadImg.src = hoverImageSrc;
+if (heroImageWrap) {
+  // Mobile tap & desktop click toggle
+  heroImageWrap.addEventListener('click', (e) => {
+    heroImageWrap.classList.toggle('is-active');
+  });
 
-  profileImages.forEach((img) => {
-    const originalSrc = img.getAttribute('src');
+  // Keyboard accessibility (Enter / Space to toggle)
+  heroImageWrap.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      heroImageWrap.classList.toggle('is-active');
+    }
+  });
 
-    if (!originalSrc) return;
-
-    img.dataset.originalSrc = originalSrc;
-
-    const changeImage = (targetSrc) => {
-      img.style.opacity = '0';
-      setTimeout(() => {
-        img.setAttribute('src', targetSrc);
-        img.style.opacity = '1';
-      }, 170);
-    };
-
-    img.addEventListener('mouseenter', () => {
-      if (img.getAttribute('src') !== hoverImageSrc) {
-        changeImage(hoverImageSrc);
-      }
-    });
-
-    img.addEventListener('mouseleave', () => {
-      if (img.getAttribute('src') !== originalSrc) {
-        changeImage(originalSrc);
-      }
-    });
+  // Tap outside resets back to original image
+  document.addEventListener('click', (e) => {
+    if (!heroImageWrap.contains(e.target)) {
+      heroImageWrap.classList.remove('is-active');
+    }
   });
 }
