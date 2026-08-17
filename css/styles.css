@@ -659,9 +659,9 @@ section.section {
    View Page (UI/UX Design Showcase)
 ========================================= */
 .view-hero {
-  min-height: 60vh;
-  padding-top: 120px;
-  padding-bottom: 40px;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .view-hero__badges {
