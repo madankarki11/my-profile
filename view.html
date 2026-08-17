@@ -64,14 +64,74 @@
       </div>
 
       <div class="view-hero__badges">
-        <span class="badge"><i class="fa-brands fa-figma"></i> Figma</span>
+        <button type="button" class="badge badge--btn" id="badge-figma" aria-expanded="false" title="Click to view Figma design">
+          <i class="fa-brands fa-figma"></i> Figma <i class="fa-solid fa-arrow-down badge-arrow"></i>
+        </button>
         <span class="badge"><i class="fa-solid fa-layer-group"></i> Design Systems</span>
         <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> Mobile &amp; Web</span>
         <span class="badge"><i class="fa-solid fa-code"></i> Frontend Ready</span>
       </div>
+
+      <!-- Figma Project Preview (Revealed on Figma badge click) -->
+      <div class="figma-preview-wrapper" id="figma-preview-wrapper">
+        <div class="figma-preview-card">
+          <div class="figma-preview-header">
+            <div class="figma-preview-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="figma-preview-title">
+              <i class="fa-brands fa-figma"></i>
+              <span>Smart Watch UI / UX Design &amp; Wireframes</span>
+            </div>
+            <div class="figma-preview-actions">
+              <span class="figma-preview-hint">Click image to zoom</span>
+              <button type="button" class="figma-preview-close" id="figma-preview-close" aria-label="Close Preview">&times;</button>
+            </div>
+          </div>
+          <div class="figma-preview-body">
+            <img src="assets/images/figma-project.png" alt="Smart Watch UI UX Figma Design Wireframes and Screens by Madan Karki" class="figma-preview-img" id="figma-preview-img">
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </main>
+
+  <script>
+    const figmaBtn = document.getElementById('badge-figma');
+    const figmaWrapper = document.getElementById('figma-preview-wrapper');
+    const figmaClose = document.getElementById('figma-preview-close');
+    const figmaImg = document.getElementById('figma-preview-img');
+
+    if (figmaBtn && figmaWrapper) {
+      figmaBtn.addEventListener('click', () => {
+        const isOpen = figmaWrapper.classList.toggle('is-open');
+        figmaBtn.classList.toggle('is-active', isOpen);
+        figmaBtn.setAttribute('aria-expanded', isOpen);
+
+        if (isOpen) {
+          setTimeout(() => {
+            figmaWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 200);
+        }
+      });
+    }
+
+    if (figmaClose && figmaWrapper && figmaBtn) {
+      figmaClose.addEventListener('click', () => {
+        figmaWrapper.classList.remove('is-open');
+        figmaBtn.classList.remove('is-active');
+        figmaBtn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    if (figmaImg) {
+      figmaImg.addEventListener('click', () => {
+        figmaImg.classList.toggle('is-zoomed');
+      });
+    }
+  </script>
 
 </body>
 

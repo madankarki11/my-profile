@@ -683,7 +683,7 @@ section.section {
   font-size: 0.8rem;
   color: var(--text-secondary);
   letter-spacing: 0.04em;
-  transition: border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .badge:hover {
@@ -694,6 +694,185 @@ section.section {
 
 .badge i {
   color: var(--text-primary);
+}
+
+.badge--btn {
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.badge--btn:hover,
+.badge--btn:focus-visible {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: #252525;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.badge-arrow {
+  font-size: 0.7rem;
+  transition: transform var(--transition-fast);
+  opacity: 0.7;
+}
+
+.badge--btn.is-active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.badge--btn.is-active i {
+  color: #000000;
+}
+
+.badge--btn.is-active .badge-arrow {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   Figma Project Preview Box
+========================================= */
+.figma-preview-wrapper {
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.3s ease;
+  pointer-events: none;
+}
+
+.figma-preview-wrapper.is-open {
+  opacity: 1;
+  max-height: 1400px;
+  margin-top: 36px;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.figma-preview-card {
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+}
+
+.figma-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #181818;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.figma-preview-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.figma-preview-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.figma-preview-dots span:nth-child(1) { background: #ff5f56; }
+.figma-preview-dots span:nth-child(2) { background: #ffbd2e; }
+.figma-preview-dots span:nth-child(3) { background: #27c93f; }
+
+.figma-preview-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.02em;
+}
+
+.figma-preview-title i {
+  color: #a259ff;
+}
+
+.figma-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.figma-preview-hint {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.figma-preview-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color var(--transition-fast);
+}
+
+.figma-preview-close:hover {
+  color: var(--text-primary);
+}
+
+.figma-preview-body {
+  position: relative;
+  background: #080808;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  max-height: 72vh;
+}
+
+.figma-preview-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  cursor: zoom-in;
+  transition: transform 0.25s ease, max-width 0.25s ease;
+}
+
+.figma-preview-img.is-zoomed {
+  width: auto;
+  max-width: none;
+  cursor: zoom-out;
+}
+
+@media (max-width: 768px) {
+  .figma-preview-hint {
+    display: none;
+  }
+  
+  .figma-preview-header {
+    padding: 10px 14px;
+  }
+  
+  .figma-preview-title {
+    font-size: 0.75rem;
+  }
 }
 
 .projects-showcase,
