@@ -305,7 +305,7 @@ section.section {
 
 .intro__inner {
   max-width: 1060px;
-  margin-left: clamp(24px, 5vw, 70px);
+  margin-left: 0;
 }
 
 .intro__heading {
