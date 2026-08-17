@@ -470,6 +470,8 @@ section.section {
 }
 
 .btn-resume {
+  align-self: flex-start;
+  width: fit-content;
   display: inline-flex;
   align-items: center;
   gap: 12px;
