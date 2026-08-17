@@ -36,39 +36,40 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Swap portrait on hover with smooth fade
-const profileImages = document.querySelectorAll('.hero__image, .sidebar__profile-img');
-const hoverImageCandidates = [
-  'file:///C:/Users/ACER/OneDrive/Desktop/my%20profile/this%20is%20my%20image.jpg',
-  'file:///C:/Users/ACER/OneDrive/Desktop/my%20profile/this%20is%20my%20image.jpg',
-  'file:///C:/Users/ACER/OneDrive/Desktop/my%20profile/This%20is%20my%20image1.jpg'
-];
-const hoverImageSrc = hoverImageCandidates[0];
+// Swap portrait on hover with smooth fade (desktop only)
+if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+  const profileImages = document.querySelectorAll('.hero__image, .sidebar__profile-img');
+  const hoverImageSrc = 'this is my image.jpg';
 
-profileImages.forEach((img) => {
-  const originalSrc = img.getAttribute('src');
+  // Preload hover image
+  const preloadImg = new Image();
+  preloadImg.src = hoverImageSrc;
 
-  if (!originalSrc) return;
+  profileImages.forEach((img) => {
+    const originalSrc = img.getAttribute('src');
 
-  img.dataset.originalSrc = originalSrc;
+    if (!originalSrc) return;
 
-  const changeImage = (targetSrc) => {
-    img.style.opacity = '0';
-    setTimeout(() => {
-      img.setAttribute('src', targetSrc);
-      img.style.opacity = '1';
-    }, 170);
-  };
+    img.dataset.originalSrc = originalSrc;
 
-  img.addEventListener('mouseenter', () => {
-    if (img.getAttribute('src') !== hoverImageSrc) {
-      changeImage(hoverImageSrc);
-    }
+    const changeImage = (targetSrc) => {
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.setAttribute('src', targetSrc);
+        img.style.opacity = '1';
+      }, 170);
+    };
+
+    img.addEventListener('mouseenter', () => {
+      if (img.getAttribute('src') !== hoverImageSrc) {
+        changeImage(hoverImageSrc);
+      }
+    });
+
+    img.addEventListener('mouseleave', () => {
+      if (img.getAttribute('src') !== originalSrc) {
+        changeImage(originalSrc);
+      }
+    });
   });
-
-  img.addEventListener('mouseleave', () => {
-    if (img.getAttribute('src') !== originalSrc) {
-      changeImage(originalSrc);
-    }
-  });
-});
+}
