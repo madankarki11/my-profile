@@ -39,7 +39,7 @@ if (yearEl) {
 // Swap portrait on hover with smooth fade (desktop only)
 if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
   const profileImages = document.querySelectorAll('.hero__image, .sidebar__profile-img');
-  const hoverImageSrc = 'this is my image.jpg';
+  const hoverImageSrc = 'assets/images/hover.jpg?v=2';
 
   // Preload hover image
   const preloadImg = new Image();
