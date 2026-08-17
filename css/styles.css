@@ -15,7 +15,7 @@
   --text-secondary: #a3a3a3;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --accent: #ffffff;
-  --sidebar-width: 60px;
+  --sidebar-width: 80px;
   --transition-fast: 0.2s ease;
   --transition-med: 0.35s ease;
   --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -127,34 +127,54 @@ section.section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   width: 100%;
-  min-height: 58px;
+  min-height: 74px;
+  padding: 14px 6px;
   background: var(--sidebar-bg);
-  color: var(--text-primary);
-  transition: background var(--transition-fast);
+  color: #ffffff;
+  transition: background var(--transition-fast), color var(--transition-fast);
 }
 
 .nav-link:hover,
 .nav-link:focus-visible {
-  background: #2f2f2f;
+  background: #ffffff;
+  color: #000000;
+}
+
+.nav-link:hover .nav-icon,
+.nav-link:hover span {
+  color: #000000;
 }
 
 .nav-link.active {
-  background: #2f2f2f;
+  background: #333333;
+  color: #ffffff;
+}
+
+.nav-link.active:hover {
+  background: #ffffff;
+  color: #000000;
 }
 
 .nav-icon {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
-  color: #ffffff;
+  color: inherit;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-link:hover .nav-icon {
+  transform: translateY(-1px);
 }
 
 .nav-link span {
-  font-size: 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: inherit;
+  transition: color var(--transition-fast);
 }
 
 /* =========================================
@@ -789,7 +809,7 @@ section.section {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 64px;
+    height: 70px;
     width: 100%;
     flex-direction: row;
     border-right: none;
@@ -810,12 +830,22 @@ section.section {
   }
 
   .nav-link {
-    padding: 10px 4px;
+    min-height: 100%;
+    padding: 10px 6px;
+    gap: 6px;
+  }
+
+  .nav-icon {
+    font-size: 20px;
+  }
+
+  .nav-link span {
+    font-size: 0.62rem;
   }
 
   .main {
     margin-left: 0;
-    padding-bottom: 64px;
+    padding-bottom: 70px;
   }
 
   section.section {
