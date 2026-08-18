@@ -48,15 +48,13 @@ a {
 }
 
 section.section {
-  padding: 120px 6vw;
-  min-height: 100vh;
+  padding: 50px 6vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .section-header {
-  margin-bottom: 48px;
+  margin-bottom: 30px;
 }
 
 .section-kicker {
@@ -188,6 +186,8 @@ section.section {
    Hero
 ========================================= */
 .hero {
+  min-height: 100vh;
+  justify-content: center;
   align-items: center;
   text-align: center;
   gap: 40px;
@@ -318,10 +318,11 @@ section.section {
 /* =========================================
    Intro (below hero image)
 ========================================= */
+section.intro,
 .intro {
   min-height: 0;
   background: #000;
-  padding: 70px 6vw 90px;
+  padding: 45px 6vw 30px;
   display: block;
 }
 
@@ -334,7 +335,7 @@ section.section {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.01em;
 }
@@ -342,13 +343,13 @@ section.section {
 .intro__divider {
   border: none;
   border-top: 1px solid var(--border-subtle);
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
 .intro__text {
   color: var(--text-secondary);
   font-size: clamp(1rem, 1.15vw, 1.1rem);
-  line-height: 1.85;
+  line-height: 1.68;
   letter-spacing: 0.01em;
 }
 
@@ -410,29 +411,35 @@ section.section {
 /* =========================================
    Skills
 ========================================= */
+section.skills,
 .skills {
+  min-height: 0;
+  padding: 35px 6vw 45px;
   background: #000;
+  display: flex;
+  flex-direction: column;
 }
 
 .skills .section-header {
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
+  margin-bottom: 30px;
 }
 
 .skills__bars {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 24px;
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
-  margin-bottom: 64px;
+  margin-bottom: 34px;
   text-align: center;
 }
 
 .skill-bar__label {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -461,10 +468,10 @@ section.section {
   gap: 24px;
   background: #f2f2f2;
   border-radius: 6px;
-  padding: 40px 6vw;
+  padding: 26px 4vw;
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
-  margin-bottom: 48px;
+  margin-bottom: 30px;
 }
 
 .stats__item {
@@ -515,19 +522,25 @@ section.section {
 /* =========================================
    Reputation
 ========================================= */
+section.reputation,
 .reputation {
+  min-height: 0;
+  padding: 35px 6vw 45px;
   background: #000;
+  display: flex;
+  flex-direction: column;
 }
 
 .reputation .section-header {
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
+  margin-bottom: 30px;
 }
 
 .reputation__list {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 28px;
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
 }
@@ -1686,10 +1699,18 @@ section.section {
 /* =========================================
    Contact
 ========================================= */
+section.contact,
+.contact {
+  min-height: 0;
+  padding: 35px 6vw 55px;
+  display: flex;
+  flex-direction: column;
+}
+
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 52px;
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
 }
@@ -1697,6 +1718,7 @@ section.section {
 .contact .section-header {
   max-width: 1060px;
   margin-left: clamp(24px, 5vw, 70px);
+  margin-bottom: 30px;
 }
 
 .contact__lead {
@@ -1763,15 +1785,33 @@ section.section {
   padding: 12px 14px;
   color: var(--text-primary);
   font-family: var(--font);
-  font-size: 0.95rem;
+  font-size: 16px;
   transition: border-color var(--transition-fast);
   resize: vertical;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .form-row input:focus,
 .form-row textarea:focus {
   outline: none;
   border-color: var(--text-primary);
+}
+
+/* Hide increase/decrease spinner buttons on number inputs across all web and mobile browsers */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .btn-submit {
@@ -1800,7 +1840,7 @@ section.section {
 }
 
 .footer {
-  margin-top: 80px;
+  margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--border-subtle);
   color: var(--text-secondary);
@@ -1913,7 +1953,39 @@ section.section {
   }
 
   section.section {
-    padding: 80px 6vw;
+    padding: 36px 6vw;
+  }
+
+  section.intro,
+  .intro {
+    padding: 30px 6vw 18px;
+  }
+
+  section.skills,
+  .skills,
+  section.reputation,
+  .reputation,
+  section.contact,
+  .contact {
+    padding: 22px 6vw 30px;
+  }
+
+  .skills__bars {
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .stats {
+    padding: 20px 18px;
+    margin-bottom: 24px;
+  }
+
+  .reputation__list {
+    gap: 24px;
+  }
+
+  .footer {
+    margin-top: 36px;
   }
 
   .intro__inner,
@@ -1938,7 +2010,7 @@ section.section {
   .about__grid,
   .contact__grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
 
   .project-grid,
@@ -1967,14 +2039,153 @@ section.section {
 
 @media (max-width: 480px) {
   .hero {
-    padding-top: 60px;
+    padding-top: 50px;
   }
 
   .hero__title {
     font-size: 2rem;
   }
 
+  section.intro,
   .intro {
-    padding: 50px 6vw 60px;
+    padding: 20px 6vw 10px;
+  }
+
+  section.skills,
+  .skills,
+  section.reputation,
+  .reputation,
+  section.contact,
+  .contact {
+    padding: 14px 6vw 20px;
+  }
+}
+
+/* =========================================
+   Toast Notification System
+========================================= */
+.toast-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(74, 222, 128, 0.15);
+  color: #ffffff;
+  padding: 16px 20px 18px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(24px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.toast.is-hiding {
+  transform: translateY(12px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.toast__icon {
+  color: #4ade80;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.toast__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast__title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 3px;
+  letter-spacing: 0.02em;
+}
+
+.toast__message {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.toast__close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: -2px;
+  margin-right: -6px;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.toast__close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toast__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #4ade80;
+  width: 100%;
+  transform-origin: left;
+  animation: toastProgressBar linear forwards;
+}
+
+@keyframes toastProgressBar {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .toast-container {
+    bottom: 80px;
+    right: 14px;
+    left: 14px;
+    max-width: calc(100vw - 28px);
+  }
+
+  .toast {
+    width: 100%;
+    padding: 14px 16px 16px;
   }
 }
