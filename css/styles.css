@@ -656,6 +656,275 @@ section.section {
 }
 
 /* =========================================
+   Services Page Showcase
+========================================= */
+.services-hero {
+  min-height: 100vh;
+  padding: 60px 4vw 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.services-hero .hero__text {
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.services-hero .hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.services-hero .hero__subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: var(--text-secondary);
+}
+
+.services-showcase-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 36px;
+  flex-wrap: wrap;
+  max-width: 820px;
+  width: 100%;
+  margin: 36px auto 0;
+}
+
+.services-showcase-wrap {
+  position: relative;
+  flex: 1 1 300px;
+  max-width: 340px;
+  min-width: 280px;
+  perspective: 1200px;
+}
+
+/* Subtle glowing triangular backdrop accents */
+.services-triangle-backdrop {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.35), rgba(163, 230, 53, 0.02));
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+  border-radius: 6px;
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 0;
+  animation: triangleGlow 4s ease-in-out infinite alternate;
+}
+
+.services-triangle-backdrop--bottom {
+  top: auto;
+  bottom: -14px;
+  right: -14px;
+  left: auto;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(315deg, rgba(163, 230, 53, 0.3), transparent);
+  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+}
+
+.services-triangle-backdrop--purple {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(168, 85, 247, 0.02));
+}
+
+.services-triangle-backdrop--purple-bottom {
+  top: auto;
+  bottom: -14px;
+  right: -14px;
+  left: auto;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(315deg, rgba(168, 85, 247, 0.35), transparent);
+  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+}
+
+@keyframes triangleGlow {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.96) rotate(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.06) rotate(3deg);
+  }
+}
+
+/* Angled Mockup Card with Triangular 3D Perspective */
+.services-mockup-card {
+  position: relative;
+  z-index: 1;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(163, 230, 53, 0.08);
+  transform: perspective(1000px) rotateY(-3deg) rotateX(2deg) rotate(-1deg);
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: zoom-in;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.services-mockup-card--purple {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.08);
+  transform: perspective(1000px) rotateY(3deg) rotateX(2deg) rotate(1deg);
+}
+
+.services-mockup-card:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) rotate(0deg) scale(1.02);
+  border-color: rgba(163, 230, 53, 0.5);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(163, 230, 53, 0.22);
+}
+
+.services-mockup-card--purple:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(168, 85, 247, 0.25);
+}
+
+.services-mockup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #161616;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.services-mockup-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.services-mockup-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.services-mockup-dots span:nth-child(1) {
+  background: #ff5f56;
+}
+
+.services-mockup-dots span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.services-mockup-dots span:nth-child(3) {
+  background: #27c93f;
+}
+
+.services-mockup-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.02em;
+}
+
+.services-mockup-title i {
+  color: #a3e635;
+}
+
+.services-mockup-title--purple i {
+  color: #c084fc;
+}
+
+.services-mockup-hint {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.services-mockup-body {
+  position: relative;
+  background: #080808;
+  overflow: hidden;
+  flex: 1;
+}
+
+.services-mockup-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.services-mockup-card:hover .services-mockup-img {
+  transform: scale(1.015);
+}
+
+/* Services CTA & Description Block */
+.services-cta-wrap {
+  margin: 44px auto 0;
+  max-width: 780px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 26px;
+  position: relative;
+  z-index: 1;
+}
+
+.services-description {
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: #c4c4c4;
+  max-width: 720px;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.services-connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.services-connect-btn i {
+  font-size: 0.85rem;
+}
+
+.services-connect-btn:hover {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* =========================================
    View Page (UI/UX Design Showcase)
 ========================================= */
 .view-hero {
@@ -745,9 +1014,9 @@ section.section {
   overflow: hidden;
   transform: translateY(15px);
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              margin 0.3s ease;
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.3s ease;
   pointer-events: none;
 }
 
@@ -789,9 +1058,17 @@ section.section {
   border-radius: 50%;
 }
 
-.figma-preview-dots span:nth-child(1) { background: #ff5f56; }
-.figma-preview-dots span:nth-child(2) { background: #ffbd2e; }
-.figma-preview-dots span:nth-child(3) { background: #27c93f; }
+.figma-preview-dots span:nth-child(1) {
+  background: #ff5f56;
+}
+
+.figma-preview-dots span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.figma-preview-dots span:nth-child(3) {
+  background: #27c93f;
+}
 
 .figma-preview-title {
   font-size: 0.85rem;
@@ -929,13 +1206,23 @@ section.section {
 }
 
 @keyframes orbit-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes orbit-rotate-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 .orbit-center-hub {
@@ -1059,7 +1346,7 @@ section.section {
     width: 360px;
     height: 360px;
   }
-  
+
   .orbit-center-hub {
     width: 86px;
     height: 86px;
@@ -1180,11 +1467,11 @@ section.section {
   .figma-preview-hint {
     display: none;
   }
-  
+
   .figma-preview-header {
     padding: 10px 14px;
   }
-  
+
   .figma-preview-title {
     font-size: 0.75rem;
   }

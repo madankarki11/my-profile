@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://madankarki11.com.np/sitemap.xml

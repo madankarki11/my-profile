@@ -1,9 +1,9 @@
 // Active nav link highlighting based on scroll position
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
-const isViewPage = window.location.pathname.includes('view.html') || window.location.pathname.endsWith('/view') || window.location.pathname.endsWith('/view/');
+const isSubPage = window.location.pathname.includes('view.html') || window.location.pathname.includes('services.html') || window.location.pathname.endsWith('/view') || window.location.pathname.endsWith('/services') || window.location.pathname.endsWith('/view/') || window.location.pathname.endsWith('/services/');
 
-if (!isViewPage && sections.length > 0) {
+if (!isSubPage && sections.length > 0) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
