@@ -1785,11 +1785,9 @@ section.contact,
   padding: 12px 14px;
   color: var(--text-primary);
   font-family: var(--font);
-  font-size: 16px;
+  font-size: 0.95rem;
   transition: border-color var(--transition-fast);
   resize: vertical;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .form-row input:focus,
@@ -1798,14 +1796,10 @@ section.contact,
   border-color: var(--text-primary);
 }
 
-/* Hide increase/decrease spinner buttons on number inputs across all web and mobile browsers */
+/* Hide increase/decrease spinner buttons on number inputs */
 input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   margin: 0;
 }
 

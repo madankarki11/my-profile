@@ -33,7 +33,9 @@ const status = document.getElementById('form-status');
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    status.textContent = 'Thanks! Your message has been noted.';
+    if (status) {
+      status.textContent = 'Thanks! Your message has been noted.';
+    }
     form.reset();
   });
 }
@@ -68,4 +70,3 @@ if (heroImageWrap) {
     }
   });
 }
-
