@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="css/styles.css?v=2.4">
+  <link rel="stylesheet" href="css/styles.css?v=3.0">
 </head>
 
 <body>
@@ -94,7 +94,7 @@
       </div>
 
       <div class="view-hero__badges">
-        <button type="button" class="badge badge--btn" id="badge-figma" aria-expanded="false"
+        <button type="button" class="badge badge--btn is-active" id="badge-figma" aria-expanded="true"
           title="Click to view Figma design">
           <i class="fa-brands fa-figma"></i> Figma <i class="fa-solid fa-arrow-down badge-arrow"></i>
         </button>
@@ -107,7 +107,7 @@
       </div>
 
       <!-- Figma Project Preview (Revealed on Figma badge click) -->
-      <div class="figma-preview-wrapper" id="figma-preview-wrapper">
+      <div class="figma-preview-wrapper is-open" id="figma-preview-wrapper">
         <!-- 1. Main Figma Canvas Preview Card -->
         <div class="figma-preview-card">
           <div class="figma-preview-header">
@@ -235,7 +235,7 @@
     <p class="lightbox-caption" id="lightbox-caption"></p>
   </div>
 
-  <script src="js/main.js?v=2.1"></script>
+  <script src="js/main.js?v=3.0"></script>
   <script>
     const figmaBtn = document.getElementById('badge-figma');
     const figmaWrapper = document.getElementById('figma-preview-wrapper');
@@ -266,47 +266,64 @@
       }
     }
 
-    if (figmaBtn && figmaWrapper) {
-      figmaBtn.addEventListener('click', () => {
-        closeDesignSystems();
-        const isOpen = figmaWrapper.classList.toggle('is-open');
-        figmaBtn.classList.toggle('is-active', isOpen);
-        figmaBtn.setAttribute('aria-expanded', isOpen);
+    function openFigma() {
+      closeDesignSystems();
+      if (figmaWrapper && figmaBtn) {
+        figmaWrapper.classList.add('is-open');
+        figmaBtn.classList.add('is-active');
+        figmaBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
 
-        if (isOpen) {
-          setTimeout(() => {
-            figmaWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 200);
+    function openDesignSystems() {
+      closeFigma();
+      if (dsWrapper && dsBtn) {
+        dsWrapper.classList.add('is-open');
+        dsBtn.classList.add('is-active');
+        dsBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    if (figmaBtn && figmaWrapper) {
+      figmaBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (figmaWrapper.classList.contains('is-open')) {
+          closeFigma();
+        } else {
+          openFigma();
         }
       });
     }
 
     if (figmaClose) {
-      figmaClose.addEventListener('click', closeFigma);
+      figmaClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeFigma();
+      });
     }
 
     if (dsBtn && dsWrapper) {
-      dsBtn.addEventListener('click', () => {
-        closeFigma();
-        const isOpen = dsWrapper.classList.toggle('is-open');
-        dsBtn.classList.toggle('is-active', isOpen);
-        dsBtn.setAttribute('aria-expanded', isOpen);
-
-        if (isOpen) {
-          setTimeout(() => {
-            dsWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 200);
+      dsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (dsWrapper.classList.contains('is-open')) {
+          closeDesignSystems();
+        } else {
+          openDesignSystems();
         }
       });
     }
 
     if (dsClose) {
-      dsClose.addEventListener('click', closeDesignSystems);
+      dsClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeDesignSystems();
+      });
     }
 
     // Lightbox modal for clicking any image to inspect full size
     document.querySelectorAll('.zoomable-img').forEach(img => {
-      img.addEventListener('click', () => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (lightbox && lightboxImg) {
           lightboxImg.src = img.src;
           lightboxCaption.textContent = img.alt || '';

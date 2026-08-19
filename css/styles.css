@@ -942,8 +942,10 @@ section.reputation,
 ========================================= */
 .view-hero {
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 60px;
   padding-bottom: 80px;
+  justify-content: flex-start;
+  gap: 24px;
 }
 
 .view-hero__badges {
@@ -951,7 +953,7 @@ section.reputation,
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  margin-top: 24px;
+  margin-top: 16px;
 }
 
 .badge {
@@ -1025,20 +1027,21 @@ section.reputation,
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transform: translateY(15px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  transform: translateY(10px);
+  transition: opacity 0.35s ease,
+    max-height 0.45s ease,
+    transform 0.35s ease,
     margin 0.3s ease;
   pointer-events: none;
 }
 
 .figma-preview-wrapper.is-open {
   opacity: 1;
-  max-height: 1400px;
-  margin-top: 36px;
+  max-height: 2600px;
+  margin-top: 32px;
   transform: translateY(0);
   pointer-events: auto;
+  overflow: visible;
 }
 
 .figma-preview-card {
@@ -1132,8 +1135,7 @@ section.reputation,
   display: flex;
   flex-direction: column;
   gap: 24px;
-  overflow-y: auto;
-  max-height: 80vh;
+  overflow: hidden;
 }
 
 .figma-canvas-preview {
@@ -1356,13 +1358,13 @@ section.reputation,
 
 @media (max-width: 600px) {
   .circular-orbit-stage {
-    width: 360px;
-    height: 360px;
+    width: min(340px, 92vw);
+    height: min(340px, 92vw);
   }
 
   .orbit-center-hub {
-    width: 86px;
-    height: 86px;
+    width: 80px;
+    height: 80px;
   }
 
   .orbit-center-hub i {
@@ -1370,25 +1372,25 @@ section.reputation,
   }
 
   .orbit-center-hub span {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
   }
 
   .orbit-center-hub small {
-    font-size: 0.55rem;
+    font-size: 0.52rem;
   }
 
   .orbit-card {
-    width: 84px;
+    width: 78px;
     padding: 5px;
     border-radius: 8px;
   }
 
   .orbit-img {
-    height: 105px;
+    height: 96px;
   }
 
   .orbit-label {
-    font-size: 0.6rem;
+    font-size: 0.56rem;
   }
 }
 
