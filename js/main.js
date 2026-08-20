@@ -34,7 +34,7 @@ if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (status) {
-      status.textContent = 'Thanks! Your message has been noted.';
+      status.textContent = 'Thank you for your message! I will reach you in one hour.';
     }
     form.reset();
   });
