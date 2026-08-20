@@ -256,7 +256,10 @@
           </div>
         </div>
 
-        <form class="contact__form" id="contact-form">
+        <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" id="access_key" value="31489a87-dd0b-47f9-937f-8198e674b238">
+          <input type="hidden" name="subject" value="New Portfolio Contact Message">
+          <input type="hidden" name="from_name" value="Madan Karki Portfolio">
           <div class="form-row">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required autocomplete="name">

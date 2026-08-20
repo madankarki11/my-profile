@@ -26,17 +26,55 @@ if (!isSubPage && sections.length > 0) {
   sections.forEach((section) => observer.observe(section));
 }
 
-// Contact form (front-end only demo submission)
+// Contact form submission via Web3Forms API
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitBtn = form.querySelector('.btn-submit');
+    const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Message';
+
     if (status) {
-      status.textContent = 'Thank you for your message! I will reach you in one hour.';
+      status.style.color = '';
+      status.textContent = 'Sending message...';
     }
-    form.reset();
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        if (status) {
+          status.style.color = '#4ade80';
+          status.textContent = 'Thank you for your message. I will get back to you within one hour.';
+        }
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Form submission failed');
+      }
+    } catch (err) {
+      if (status) {
+        status.style.color = '#f87171';
+        status.textContent = err.message || 'Oops! There was a problem sending your message. Please try again.';
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    }
   });
 }
 
